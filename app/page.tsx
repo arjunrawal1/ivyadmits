@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import HelpCarousel from "./HelpCarousel";
+import HeroVideoMosaic from "./HeroVideoMosaic";
 
 const helpItems = [
   {
@@ -127,33 +128,7 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className="grid gap-4 lg:justify-self-end">
-            <div className="border border-white/20 bg-white/12 p-5 backdrop-blur-md">
-              <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#d6f5e8]">
-                Built around the student
-              </p>
-              <div className="mt-5 grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-                <div>
-                  <p className="text-4xl font-black">1:1</p>
-                  <p className="mt-1 text-sm leading-6 text-white/75">
-                    Dedicated admissions coaching
-                  </p>
-                </div>
-                <div>
-                  <p className="text-4xl font-black">9-12</p>
-                  <p className="mt-1 text-sm leading-6 text-white/75">
-                    Support from early planning through senior year
-                  </p>
-                </div>
-                <div>
-                  <p className="text-4xl font-black">Top 20</p>
-                  <p className="mt-1 text-sm leading-6 text-white/75">
-                    Strategy for selective universities
-                  </p>
-                </div>
-              </div>
-            </div>
-          </aside>
+          <HeroVideoMosaic />
         </div>
       </section>
 
