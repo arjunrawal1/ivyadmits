@@ -29,47 +29,40 @@ button {
   font: inherit;
 }
 
-.service-rail::before,
-.service-rail::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  height: 72px;
-  pointer-events: none;
+.help-focus-carousel {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
 }
 
-.service-rail::before {
-  top: 0;
-  background: linear-gradient(to bottom, #ffffff 8%, rgba(255, 255, 255, 0));
+.help-focus-rail {
+  padding-inline: max(1.25rem, calc((100vw - 350px) / 2));
+  scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
-.service-rail::after {
-  bottom: 0;
-  background: linear-gradient(to top, #ffffff 8%, rgba(255, 255, 255, 0));
+.help-focus-rail::-webkit-scrollbar {
+  display: none;
 }
 
-.service-track {
-  animation: service-scroll 18s linear infinite;
-}
-
-.service-rail:hover .service-track {
-  animation-play-state: paused;
-}
-
-@keyframes service-scroll {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(-50%);
-  }
+.help-focus-card {
+  transform-origin: center;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .service-track {
-    animation: none;
+  .help-focus-card,
+  .help-focus-card img {
+    transition-duration: 1ms;
   }
 }

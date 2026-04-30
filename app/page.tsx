@@ -1,55 +1,42 @@
 import Image from "next/image";
 
-const services = [
+import HelpCarousel from "./HelpCarousel";
+
+const helpItems = [
   {
-    title: "Olympiads",
-    accent: "#0b5d4a",
-    items: [
-      { name: "USA Physics Olympiad", mark: "USAPhO" },
-      { name: "USA Math Olympiad", mark: "USAMO" },
-      { name: "Science Olympiad", mark: "SciOly" },
-      { name: "USA Computing Olympiad", mark: "USACO" },
-      { name: "Chemistry Olympiad", mark: "USNCO" },
-      { name: "Biology Olympiad", mark: "USABO" },
-    ],
+    title: "Starting a non-profit organization",
+    subtitle: "Turn a real student-led mission into programs, partnerships, and measurable impact.",
+    image: "/help-carousel/nonprofit.jpg",
   },
   {
-    title: "Competitions",
-    accent: "#b97813",
-    items: [
-      { name: "DECA", mark: "DECA" },
-      { name: "FBLA", mark: "FBLA" },
-      { name: "TSA", mark: "TSA" },
-      { name: "HOSA", mark: "HOSA" },
-      { name: "Mock Trial", mark: "MT" },
-      { name: "Model UN", mark: "MUN" },
-      { name: "Debate", mark: "NSDA" },
-      { name: "Robotics", mark: "FIRST" },
-    ],
+    title: "Presenting at research conferences",
+    subtitle: "Shape independent work into a polished abstract, poster, talk, and follow-up story.",
+    image: "/help-carousel/research-conference.jpg",
   },
   {
-    title: "Build From Zero",
-    accent: "#174b75",
-    items: [
-      { name: "Start a business", mark: "LLC" },
-      { name: "Start a nonprofit", mark: "501c3" },
-      { name: "Research project", mark: "R&D" },
-      { name: "App or product", mark: "MVP" },
-      { name: "Community program", mark: "LOCAL" },
-      { name: "Original publication", mark: "PUB" },
-    ],
+    title: "Competing at hackathons",
+    subtitle: "Pick stronger problems, build quickly, and present the product with technical clarity.",
+    image: "/help-carousel/startup.jpg",
   },
   {
-    title: "Application Layer",
-    accent: "#773f5f",
-    items: [
-      { name: "College list", mark: "LIST" },
-      { name: "Positioning", mark: "STORY" },
-      { name: "Essays", mark: "ESSAY" },
-      { name: "Activities list", mark: "10X" },
-      { name: "Recommendations", mark: "REC" },
-      { name: "Interviews", mark: "Q&A" },
-    ],
+    title: "Working at a startup",
+    subtitle: "Find useful roles, document ownership, and translate shipped work into application proof.",
+    image: "/help-carousel/startup.jpg",
+  },
+  {
+    title: "Competing in Olympiads",
+    subtitle: "Build a practice system for advanced contests, qualification ladders, and review cycles.",
+    image: "/help-carousel/nonprofit.jpg",
+  },
+  {
+    title: "Winning club competitions",
+    subtitle: "Prepare cases, pitches, roleplays, and leadership narratives that stand out to judges.",
+    image: "/help-carousel/competition.jpg",
+  },
+  {
+    title: "Researching in a lab",
+    subtitle: "Plan mentor outreach, methods, documentation, and credible next steps for publication.",
+    image: "/help-carousel/research-conference.jpg",
   },
 ];
 
@@ -168,7 +155,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="results" className="border-b border-[#18211f]/10 bg-white">
+      <section
+        id="results"
+        className="scroll-mt-20 border-b border-[#18211f]/10 bg-white"
+      >
         <div className="mx-auto max-w-7xl px-5 py-8 lg:px-8">
           <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-[#65716d]">
             Target schools students care about
@@ -193,63 +183,31 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="services" className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.68fr_1.32fr]">
-          <div className="lg:sticky lg:top-28 lg:self-start">
-            <p className="text-sm font-black uppercase tracking-[0.18em] text-[#0b5d4a]">
-              What we help with
+      <section
+        id="services"
+        className="scroll-mt-20 overflow-hidden bg-[#f4f7f2] py-20"
+      >
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-[#0b5d4a]">
+                What we help with
+              </p>
+              <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
+                Build the profile before the application.
+              </h2>
+            </div>
+            <p className="max-w-md text-lg leading-8 text-[#596560] md:text-right">
+              Olympiads, competitions, ventures, research, leadership, then the
+              essays that bring it all into focus.
             </p>
-            <h2 className="mt-4 text-4xl font-black leading-tight">
-              Build the profile before the application.
-            </h2>
-            <p className="mt-5 max-w-md text-lg leading-8 text-[#596560]">
-              Competitions, ventures, research, leadership, then the essays.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-            {services.map((service, serviceIndex) => (
-              <article
-                key={service.title}
-                className="overflow-hidden border border-[#18211f]/12 bg-white"
-              >
-                <div className="border-b border-[#18211f]/10 p-3 sm:p-4">
-                  <span
-                    className="mb-3 block h-1.5 w-10"
-                    style={{ backgroundColor: service.accent }}
-                  />
-                  <h3 className="text-lg font-black">{service.title}</h3>
-                </div>
-                <div className="service-rail relative h-[280px] overflow-hidden sm:h-[360px]">
-                  <ul
-                    className="service-track grid gap-3 p-3 sm:p-4"
-                    style={{ animationDelay: `${serviceIndex * -2.5}s` }}
-                  >
-                    {[...service.items, ...service.items].map((item, index) => (
-                      <li
-                        key={`${item.name}-${index}`}
-                        aria-hidden={index >= service.items.length}
-                        className="grid min-h-20 content-center border border-[#18211f]/12 bg-[#f8f6f0] p-3"
-                      >
-                        <span
-                          className="text-xl font-black tracking-normal"
-                          style={{ color: service.accent }}
-                        >
-                          {item.mark}
-                        </span>
-                        <span className="mt-1 text-xs font-bold uppercase leading-5 tracking-[0.12em] text-[#596560]">
-                          {item.name}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
           </div>
         </div>
+
+        <HelpCarousel items={helpItems} />
       </section>
 
-      <section id="process" className="bg-[#10201b] text-white">
+      <section id="process" className="scroll-mt-20 bg-[#10201b] text-white">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#f3c64e]">
@@ -341,7 +299,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+      <section
+        id="contact"
+        className="mx-auto max-w-7xl scroll-mt-20 px-5 py-20 lg:px-8"
+      >
         <div className="grid gap-8 bg-[#0b5d4a] p-6 text-white md:grid-cols-[0.85fr_1.15fr] md:p-10">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#f3c64e]">
