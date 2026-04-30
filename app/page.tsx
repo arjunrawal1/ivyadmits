@@ -170,47 +170,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-5 py-20 lg:grid-cols-2 lg:px-8">
-        <div className="overflow-hidden">
-          <Image
-            src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1400&q=85"
-            alt="Graduates celebrating outdoors"
-            width={1400}
-            height={1000}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="h-full min-h-[420px] w-full object-cover"
-          />
-        </div>
-        <div className="self-center">
-          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#0b5d4a]">
-            Advising philosophy
-          </p>
-          <h2 className="mt-4 text-4xl font-black leading-tight">
-            Strategy sharp enough for parents. Coaching warm enough for students.
-          </h2>
-          <p className="mt-5 text-lg leading-8 text-[#596560]">
-            IvyAdmits is designed for families who want high standards without
-            turning applications into panic. We focus on honest positioning,
-            practical timelines, and essays that sound like the student on their
-            best day.
-          </p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            <div className="border-l-4 border-[#0b5d4a] bg-white p-5">
-              <p className="font-black">Personalized roadmap</p>
-              <p className="mt-2 text-sm leading-6 text-[#65716d]">
-                Every task maps to the student&apos;s schools, story, and deadlines.
-              </p>
-            </div>
-            <div className="border-l-4 border-[#f3c64e] bg-white p-5">
-              <p className="font-black">Parent visibility</p>
-              <p className="mt-2 text-sm leading-6 text-[#65716d]">
-                Families can track progress without micromanaging every draft.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
           <div className="max-w-3xl">
