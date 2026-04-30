@@ -195,21 +195,38 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
           <div className="max-w-3xl">
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#0b5d4a]">
-              Social proof placeholders
+              Our team
             </p>
-            <h2 className="mt-4 text-4xl font-black leading-tight">
-              Add your real results, counselor bios, and student stories here.
+            <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
+              Guidance from people who know elite admissions from the inside.
             </h2>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {[
-              "Replace this with an acceptance story, parent quote, or case study.",
-              "Add counselor credentials, admissions reader experience, or school specialties.",
-              "Show verified outcomes, scholarship wins, or program completion metrics.",
-            ].map((quote) => (
-              <blockquote key={quote} className="border border-[#18211f]/12 p-6">
-                <p className="text-lg leading-8 text-[#33413d]">{quote}</p>
-              </blockquote>
+              {
+                title: "Students at top 5 universities",
+                body: "Current students and recent admits help translate ambition into school-specific strategy, activities, and essays that feel current.",
+              },
+              {
+                title: "Former admissions officers",
+                body: "Experienced readers bring judgment on positioning, evaluation, and the details that make an application easier to understand.",
+              },
+              {
+                title: "PhD researchers and specialists",
+                body: "Subject experts support students building research, academic depth, competitions, and distinctive intellectual projects.",
+              },
+            ].map((item) => (
+              <article
+                key={item.title}
+                className="border border-[#18211f]/12 bg-[#f8f6f0] p-6"
+              >
+                <p className="text-3xl font-black leading-tight text-[#0b5d4a]">
+                  {item.title}
+                </p>
+                <p className="mt-4 text-base leading-7 text-[#596560]">
+                  {item.body}
+                </p>
+              </article>
             ))}
           </div>
         </div>
