@@ -1,0 +1,112 @@
+"use client";
+
+import { useState } from "react";
+
+type Status = "idle" | "submitting" | "success" | "error";
+
+export default function ConsultationForm() {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (status === "submitting") return;
+
+    setStatus("submitting");
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/consultation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone }),
+      });
+
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+
+      if (!res.ok) {
+        setStatus("error");
+        setMessage(data.error ?? "Something went wrong. Please try again.");
+        return;
+      }
+
+      setStatus("success");
+      setMessage("Thanks! We'll call you shortly to set up your consultation.");
+      setName("");
+      setPhone("");
+    } catch {
+      setStatus("error");
+      setMessage("Something went wrong. Please try again.");
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} noValidate className="p-6 md:p-8">
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div className="flex flex-col gap-2">
+          <label
+            htmlFor="consult-name"
+            className="text-xs font-black uppercase tracking-[0.16em] text-[#0b5d4a]"
+          >
+            Name (optional)
+          </label>
+          <input
+            id="consult-name"
+            name="name"
+            type="text"
+            autoComplete="name"
+            placeholder="Your name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            disabled={status === "submitting"}
+            className="min-h-12 border border-[#18211f]/20 bg-white px-4 text-base text-[#18211f] outline-none transition focus:border-[#0b5d4a] focus:ring-2 focus:ring-[#0b5d4a]/25 disabled:opacity-60"
+          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label
+            htmlFor="consult-phone"
+            className="text-xs font-black uppercase tracking-[0.16em] text-[#0b5d4a]"
+          >
+            Phone number
+          </label>
+          <input
+            id="consult-phone"
+            name="phone"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            placeholder="(555) 123-4567"
+            value={phone}
+            onChange={(event) => setPhone(event.target.value)}
+            required
+            disabled={status === "submitting"}
+            className="min-h-12 border border-[#18211f]/20 bg-white px-4 text-base text-[#18211f] outline-none transition focus:border-[#0b5d4a] focus:ring-2 focus:ring-[#0b5d4a]/25 disabled:opacity-60"
+          />
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        disabled={status === "submitting"}
+        className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-sm bg-[#0b5d4a] px-7 text-sm font-black text-white transition hover:bg-[#074838] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+      >
+        {status === "submitting" ? "Sending…" : "Request my free consultation"}
+      </button>
+
+      {message ? (
+        <p
+          role="status"
+          aria-live="polite"
+          className={`mt-4 text-sm font-semibold ${
+            status === "error" ? "text-[#b23b30]" : "text-[#0b5d4a]"
+          }`}
+        >
+          {message}
+        </p>
+      ) : null}
+    </form>
+  );
+}

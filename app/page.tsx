@@ -1,5 +1,4 @@
-import Script from "next/script";
-
+import ConsultationForm from "./ConsultationForm";
 import HelpCarousel from "./HelpCarousel";
 import HeroBanner from "./HeroBanner";
 
@@ -250,14 +249,7 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-8 overflow-hidden bg-[#f8f6f0]">
-            <div
-              className="calendly-inline-widget h-[700px] min-w-80"
-              data-url="https://calendly.com/contact-ivyadmits/30min"
-            />
-            <Script
-              src="https://assets.calendly.com/assets/external/widget.js"
-              strategy="lazyOnload"
-            />
+            <ConsultationForm />
           </div>
         </div>
       </section>
