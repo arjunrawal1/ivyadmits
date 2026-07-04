@@ -1,12 +1,38 @@
+import Image from "next/image";
 import ConsultationForm from "./ConsultationForm";
 import HelpCarousel from "./HelpCarousel";
 import HeroBanner from "./HeroBanner";
 
+const logoItems = [
+  { name: "Stanford", logo: "/school-logos/stanford-transparent.png" },
+  { name: "Duke", logo: "/school-logos/duke-clean.png" },
+  {
+    name: "Penn M&T",
+    logo: "/school-logos/penn-mt-official-clean.png",
+    wide: true,
+  },
+  {
+    name: "Berkeley M.E.T.",
+    logo: "/school-logos/berkeley-met-official-clean.png",
+    wide: true,
+  },
+  { name: "Harvard", logo: "/school-logos/harvard-clean.png" },
+  { name: "Yale", logo: "/school-logos/yale-clean.png" },
+  { name: "Princeton", logo: "/school-logos/princeton-clean.png" },
+  { name: "Columbia", logo: "/school-logos/columbia-clean.png" },
+  { name: "Penn", logo: "/school-logos/penn-clean.png" },
+  { name: "Brown", logo: "/school-logos/brown-clean.png" },
+  { name: "Dartmouth", logo: "/school-logos/dartmouth-clean.png" },
+  { name: "MIT", logo: "/school-logos/mit-clean.png" },
+  { name: "UChicago", logo: "/school-logos/uchicago-clean.png" },
+];
+
 const helpItems = [
   {
     title: "Starting a non-profit organization",
-    subtitle: "Turn a real student-led mission into programs, partnerships, and measurable impact.",
-    image: "/help-carousel/nonprofit.jpg",
+    subtitle:
+      "Build a student-led mission with real programs, community partners, and measurable impact.",
+    image: "/help-carousel/starting-nonprofit-sharp.jpg",
   },
   {
     title: "Presenting at research conferences",
@@ -21,22 +47,47 @@ const helpItems = [
   {
     title: "Working at a startup",
     subtitle: "Find useful roles, document ownership, and translate shipped work into application proof.",
-    image: "/help-carousel/startup-upright.jpg",
+    image: "/help-carousel/startup.jpg",
   },
   {
-    title: "Competing in Olympiads",
-    subtitle: "Build a practice system for advanced contests, qualification ladders, and review cycles.",
+    title: "Leading high-impact events",
+    subtitle:
+      "Turn event leadership into a stronger extracurricular story with ownership, scale, and follow-through.",
+    image: "/help-carousel/leading-events.jpg",
+  },
+  {
+    title: "Starting a business",
+    subtitle: "Turn an idea into a real venture with customers, traction, ownership, and a story colleges can understand.",
     image: "/help-carousel/nonprofit.jpg",
   },
   {
     title: "Winning club competitions",
     subtitle: "Prepare cases, pitches, roleplays, and leadership narratives that stand out to judges.",
-    image: "/help-carousel/competition.jpg",
+    image: "/help-carousel/club-competitions.jpg",
   },
   {
-    title: "Researching in a lab",
-    subtitle: "Plan mentor outreach, methods, documentation, and credible next steps for publication.",
-    image: "/help-carousel/research-conference.jpg",
+    title: "Leading at the national level",
+    subtitle:
+      "Frame awards, speaking roles, and national recognition into a clear application narrative.",
+    image: "/help-carousel/national-leadership.jpg",
+  },
+];
+
+const plans = [
+  {
+    title: "Hourly admissions consulting",
+    body: "Targeted support for specific colleges, application questions, activity strategy, interview prep, or last-mile decisions when you need expert guidance fast.",
+    fit: "Best for seniors with specific needs.",
+  },
+  {
+    title: "Essay review and refinement",
+    body: "Detailed feedback on Common App essays, supplementals, activity descriptions, and final revisions so each piece sounds clear, personal, and strategically aligned.",
+    fit: "Best for students with drafts in progress.",
+  },
+  {
+    title: "Long-term admissions planning",
+    body: "Ongoing mentorship across school selection, extracurricular development, leadership, research, competitions, summer plans, essays, and application strategy.",
+    fit: "Best for rising seniors and younger students.",
   },
 ];
 
@@ -85,8 +136,9 @@ export default function Home() {
           </a>
           <div className="hidden items-center gap-8 text-sm font-semibold text-[#33413d] md:flex">
             <a href="#services">Services</a>
+            <a href="#outcomes">Outcomes</a>
+            <a href="#plans">Plans</a>
             <a href="#process">Process</a>
-            <a href="#results">Outcomes</a>
             <a href="#contact">Contact</a>
           </div>
           <a
@@ -99,6 +151,32 @@ export default function Home() {
       </header>
 
       <HeroBanner />
+
+      <section className="bg-[#f8f6f0] py-4" aria-label="Mentor school logos">
+        <div className="logo-marquee overflow-hidden">
+          <div className="logo-marquee-track flex w-max items-center gap-10">
+            {[...logoItems, ...logoItems].map((school, index) => (
+              <div
+                key={`${school.name}-${index}`}
+                className={`flex h-11 shrink-0 items-center justify-center ${
+                  school.wide ? "w-36" : "w-16"
+                }`}
+                aria-hidden={index >= logoItems.length}
+              >
+                <Image
+                  src={school.logo}
+                  alt={index < logoItems.length ? `${school.name} logo` : ""}
+                  width={school.wide ? 144 : 60}
+                  height={school.wide ? 46 : 60}
+                  className={`w-auto object-contain opacity-95 ${
+                    school.wide ? "max-h-11" : "max-h-10"
+                  }`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/*
       <section
@@ -132,7 +210,7 @@ export default function Home() {
 
       <section
         id="services"
-        className="scroll-mt-20 overflow-hidden bg-[#f4f7f2] py-20"
+        className="scroll-mt-20 overflow-hidden bg-[#f4f7f2] pb-20 pt-14"
       >
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -152,6 +230,49 @@ export default function Home() {
         </div>
 
         <HelpCarousel items={helpItems} />
+      </section>
+
+      <section id="plans" className="scroll-mt-20 bg-white">
+        <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-[#0b5d4a]">
+                Plans
+              </p>
+              <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
+                Choose the level of support that fits your timeline.
+              </h2>
+            </div>
+            <p className="max-w-md text-lg leading-8 text-[#596560] md:text-right">
+              Start with a free consultation.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {plans.map((plan) => (
+              <article
+                key={plan.title}
+                className="flex min-h-[330px] flex-col border border-[#18211f]/12 bg-[#f8f6f0] p-6"
+              >
+                <p className="text-sm font-black uppercase tracking-[0.16em] text-[#0b5d4a]">
+                  {plan.fit}
+                </p>
+                <h3 className="mt-4 text-3xl font-black leading-tight text-[#18211f]">
+                  {plan.title}
+                </h3>
+                <p className="mt-4 text-base leading-7 text-[#596560]">
+                  {plan.body}
+                </p>
+                <a
+                  href="#contact"
+                  className="mt-auto inline-flex min-h-11 items-center justify-center rounded-sm bg-[#0b5d4a] px-5 text-sm font-extrabold text-white transition hover:bg-[#074838]"
+                >
+                  Ask about this plan
+                </a>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section id="process" className="scroll-mt-20 bg-[#10201b] text-white">
@@ -190,29 +311,35 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white">
+      <section id="outcomes" className="scroll-mt-20 bg-white">
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
           <div className="max-w-3xl">
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#0b5d4a]">
               Our team
             </p>
             <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
-              Guidance from people who know elite admissions from the inside.
+              Tutors with admits across the most selective schools and
+              programs.
             </h2>
+            <p className="mt-5 text-lg leading-8 text-[#596560]">
+              Our mentor network includes students admitted to every Ivy League
+              school, Stanford, Penn&apos;s M&amp;T Program, Berkeley M.E.T., and
+              other highly selective universities and honors programs.
+            </p>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {[
               {
-                title: "Students at top 5 universities",
-                body: "Current students and recent admits help translate ambition into school-specific strategy, activities, and essays that feel current.",
+                title: "Every Ivy League school",
+                body: "Across the team, mentors have earned admission to Harvard, Yale, Princeton, Columbia, Penn, Brown, Dartmouth, and Cornell.",
               },
               {
-                title: "Former admissions officers",
-                body: "Experienced readers bring judgment on positioning, evaluation, and the details that make an application easier to understand.",
+                title: "Stanford, Duke, and top programs",
+                body: "Admits include Stanford, Duke, and other highly selective schools where essays, activities, and positioning carry real weight.",
               },
               {
-                title: "PhD researchers and specialists",
-                body: "Subject experts support students building research, academic depth, competitions, and distinctive intellectual projects.",
+                title: "Penn M&T and Berkeley M.E.T.",
+                body: "Specialized program admits bring insight into business, engineering, entrepreneurship, and technical storytelling.",
               },
             ].map((item) => (
               <article

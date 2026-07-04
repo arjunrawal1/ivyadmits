@@ -100,6 +100,38 @@ button {
   transform-origin: center;
 }
 
+.logo-marquee {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    transparent 4%,
+    black 18%,
+    black 82%,
+    transparent 96%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    transparent 4%,
+    black 18%,
+    black 82%,
+    transparent 96%,
+    transparent
+  );
+}
+
+.logo-marquee-track {
+  animation: logo-marquee-scroll 42s linear infinite;
+  padding-inline: 1.25rem;
+}
+
+@keyframes logo-marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-video-reveal,
   .hero-finale-overlay,
@@ -111,5 +143,9 @@ button {
   .help-focus-card,
   .help-focus-card img {
     transition-duration: 1ms;
+  }
+
+  .logo-marquee-track {
+    animation: none;
   }
 }
