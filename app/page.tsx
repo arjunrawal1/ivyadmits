@@ -116,6 +116,39 @@ const processSteps = [
   },
 ];
 
+const mentorBios = [
+  {
+    name: "Arjun Rawal",
+    role: "Incoming Stanford student",
+    image: "/mentors/arjun-rawal.png",
+    bio: "Arjun brings experience across selective admissions, research, and startups. He has worked at RevisionDojo, a Y Combinator-funded company, is now building at Phia, founded a six-figure national tutoring business, published NeurIPS research, and became a Diamond Challenge international grand finalist through venture-building work.",
+  },
+  {
+    name: "Sathvik Gorle",
+    role: "Incoming Penn M&T student",
+    image: "/mentors/sathvik-gorle.png",
+    bio: "Sathvik combines entrepreneurship, research, and national competition experience. He founded Terrabite, received funding through Launch Chapel Hill and NSF I-Corps, won an FBLA national championship, researched economics and computer science at Duke, and interned at Rove, a Y Combinator-backed company.",
+  },
+  {
+    name: "Hadi Abdul",
+    role: "Incoming Harvard student",
+    image: "/mentors/hadi-abdul.png",
+    bio: "Hadi is a USAPhO Silver Medalist and USAMO qualifier, placing him among the nation's top high school physics and math competitors. He researches at Duke's Dunn Lab and the WHO Innovation Hub, founded VoiceWorks to support 9,000+ non-verbal students and 60+ speech-language pathologists, and contributed to patented passive-cooling technology at Katrick Tech.",
+  },
+  {
+    name: "Nikhil Vaddey",
+    role: "Incoming Berkeley M.E.T. student",
+    image: "/mentors/nikhil-vaddey.png",
+    bio: "Nikhil pairs business, technology, and service leadership. He served as an FBLA state officer and National Council board member, captained his varsity tennis team as a four-year letterman, interned in financial analysis at Citco, founded TechDreams4Kids to donate hundreds of laptops to Title I schools, and built NNR Technologies into a six-figure restaurant software business.",
+  },
+  {
+    name: "Pulak Agarwalla",
+    role: "Incoming Duke student",
+    image: "/mentors/pulak-agarwalla.png",
+    bio: "Pulak brings direct insight into the modern application process through the national Common App Student Advisory Board. He raised six figures for a chess nonprofit serving 1,000+ students, published math research at UNC, and ranks in the top 2% nationally as a competitive chess player.",
+  },
+];
+
 /*
 const schools = [
   { name: "Harvard", logo: "/school-logos/harvard.png" },
@@ -366,6 +399,47 @@ export default function Home() {
                 </p>
               </article>
             ))}
+          </div>
+
+          <div className="mt-14 border-t border-[#18211f]/12 pt-12">
+            <div className="max-w-3xl">
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-[#0b5d4a]">
+                Mentor bios
+              </p>
+              <h3 className="mt-4 text-3xl font-black leading-tight sm:text-4xl">
+                Built by students with real admits, research, startups,
+                national awards, and nonprofit impact.
+              </h3>
+            </div>
+            <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+              {mentorBios.map((mentor) => (
+                <article
+                  key={mentor.name}
+                  className="border border-[#18211f]/12 bg-[#f8f6f0]"
+                >
+                  <div className="relative aspect-square overflow-hidden bg-[#e9eee8]">
+                    <Image
+                      src={mentor.image}
+                      alt={`${mentor.name} portrait`}
+                      fill
+                      sizes="(min-width: 1280px) 20vw, (min-width: 768px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <p className="text-xl font-black leading-tight text-[#18211f]">
+                      {mentor.name}
+                    </p>
+                    <p className="mt-2 text-xs font-black uppercase tracking-[0.14em] text-[#0b5d4a]">
+                      {mentor.role}
+                    </p>
+                    <p className="mt-4 text-sm leading-6 text-[#596560]">
+                      {mentor.bio}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
