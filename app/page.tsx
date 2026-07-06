@@ -54,7 +54,7 @@ const helpItems = [
   {
     title: "Working at a startup",
     subtitle: "Find useful roles, document ownership, and translate shipped work into application proof.",
-    image: "/help-carousel/startup-team-office.png",
+    image: "/help-carousel/startup-coding-office.jpg",
   },
   {
     title: "Leading high-impact events",
