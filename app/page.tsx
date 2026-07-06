@@ -16,6 +16,13 @@ const logoItems = [
     logo: "/school-logos/berkeley-met-official-clean.png",
     wide: true,
   },
+  { name: "Caltech", logo: "/school-logos/caltech-clean.png", wide: true },
+  { name: "Carnegie Mellon", logo: "/school-logos/carnegie-mellon-clean.png", wide: true },
+  { name: "Georgia Tech", logo: "/school-logos/georgia-tech-clean.png", wide: true },
+  { name: "Michigan", logo: "/school-logos/umich-clean.png", wide: true },
+  { name: "UNC Chapel Hill", logo: "/school-logos/unc-clean.png", wide: true },
+  { name: "Vanderbilt", logo: "/school-logos/vanderbilt-clean.png", wide: true },
+  { name: "WashU", logo: "/school-logos/washu-clean.png" },
   { name: "Harvard", logo: "/school-logos/harvard-clean.png" },
   { name: "Yale", logo: "/school-logos/yale-clean.png" },
   { name: "Princeton", logo: "/school-logos/princeton-clean.png" },
@@ -47,7 +54,7 @@ const helpItems = [
   {
     title: "Working at a startup",
     subtitle: "Find useful roles, document ownership, and translate shipped work into application proof.",
-    image: "/help-carousel/startup.jpg",
+    image: "/help-carousel/startup-team-office.png",
   },
   {
     title: "Leading high-impact events",
@@ -153,6 +160,11 @@ export default function Home() {
       <HeroBanner />
 
       <section className="bg-[#f8f6f0] py-4" aria-label="Mentor school logos">
+        <div className="mx-auto mb-2 max-w-7xl px-5 lg:px-8">
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#0b5d4a]/75">
+            Admitted schools
+          </p>
+        </div>
         <div className="logo-marquee overflow-hidden">
           <div className="logo-marquee-track flex w-max items-center gap-10">
             {[...logoItems, ...logoItems].map((school, index) => (
