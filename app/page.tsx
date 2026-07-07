@@ -145,7 +145,7 @@ const mentorBios = [
     name: "Pulak Agarwalla",
     role: "Incoming Duke student",
     image: "/mentors/pulak-agarwalla.png",
-    bio: "Pulak brings direct insight into the modern application process through the national Common App Student Advisory Board. He raised six figures for a chess nonprofit serving 1,000+ students, published math research at UNC, and ranks in the top 2% nationally as a competitive chess player.",
+    bio: "Pulak brings direct insight into the modern application process through serving on the national Common App Student Advisory Board. He co-founded a chess nonprofit raising $150K+ and serving 400+ Title I students. He published math research at UNC, is a 2X AIME qualifier, NC State K-12 Chess Co-Champion (top 2% of U.S. juniors), and placed nationally in FBLA for financial math.",
   },
 ];
 
