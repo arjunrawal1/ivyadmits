@@ -1,0 +1,42 @@
+[
+  {
+    "event_name": "hero_primary_cta_clicked",
+    "event_description": "User clicked the 'Start your admissions plan' hero banner CTA.",
+    "file": "app/HeroBanner.tsx"
+  },
+  {
+    "event_name": "hero_secondary_cta_clicked",
+    "event_description": "User clicked the 'Explore services' hero banner secondary CTA.",
+    "file": "app/HeroBanner.tsx"
+  },
+  {
+    "event_name": "nav_book_consult_clicked",
+    "event_description": "User clicked the 'Book a consult' button in the navigation header.",
+    "file": "app/page.tsx"
+  },
+  {
+    "event_name": "plan_contact_clicked",
+    "event_description": "User clicked the 'Ask about this plan' CTA on a pricing plan card.",
+    "file": "app/page.tsx"
+  },
+  {
+    "event_name": "help_carousel_card_selected",
+    "event_description": "User manually navigated to a specific card in the services help carousel.",
+    "file": "app/HelpCarousel.tsx"
+  },
+  {
+    "event_name": "consultation_submitted",
+    "event_description": "User successfully submitted the free consultation request form.",
+    "file": "app/ConsultationForm.tsx"
+  },
+  {
+    "event_name": "consultation_submission_failed",
+    "event_description": "Consultation form submission returned an error on the client side.",
+    "file": "app/ConsultationForm.tsx"
+  },
+  {
+    "event_name": "consultation_received",
+    "event_description": "Server confirmed a valid consultation request was received and email sent.",
+    "file": "app/api/consultation/route.ts"
+  }
+]

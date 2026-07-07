@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import posthog from "posthog-js";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -18,9 +19,16 @@ export default function ConsultationForm() {
     setMessage("");
 
     try {
+      const distinctId = posthog.get_distinct_id() ?? "anonymous";
+      const sessionId = posthog.get_session_id() ?? undefined;
+
+      const headers: Record<string, string> = { "Content-Type": "application/json" };
+      if (distinctId) headers["x-posthog-distinct-id"] = distinctId;
+      if (sessionId) headers["x-posthog-session-id"] = sessionId;
+
       const res = await fetch("/api/consultation", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify({ name, phone }),
       });
 
@@ -29,16 +37,26 @@ export default function ConsultationForm() {
       if (!res.ok) {
         setStatus("error");
         setMessage(data.error ?? "Something went wrong. Please try again.");
+        posthog.capture("consultation_submission_failed", {
+          error_message: data.error ?? "unknown_error",
+          http_status: res.status,
+        });
         return;
       }
 
       setStatus("success");
       setMessage("Thanks! We'll call you shortly to set up your consultation.");
+      posthog.capture("consultation_submitted", {
+        provided_name: name.trim().length > 0,
+      });
       setName("");
       setPhone("");
     } catch {
       setStatus("error");
       setMessage("Something went wrong. Please try again.");
+      posthog.capture("consultation_submission_failed", {
+        error_message: "network_error",
+      });
     }
   }
 

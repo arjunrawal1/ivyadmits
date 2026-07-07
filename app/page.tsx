@@ -2,6 +2,7 @@ import Image from "next/image";
 import ConsultationForm from "./ConsultationForm";
 import HelpCarousel from "./HelpCarousel";
 import HeroBanner from "./HeroBanner";
+import TrackedLink from "./TrackedLink";
 
 const logoItems = [
   { name: "Stanford", logo: "/school-logos/stanford-transparent.png" },
@@ -181,12 +182,13 @@ export default function Home() {
             <a href="#process">Process</a>
             <a href="#contact">Contact</a>
           </div>
-          <a
+          <TrackedLink
             href="#contact"
+            event="nav_book_consult_clicked"
             className="inline-flex min-h-11 items-center justify-center rounded-sm bg-[#0b5d4a] px-5 text-sm font-extrabold text-white transition hover:bg-[#074838]"
           >
             Book a consult
-          </a>
+          </TrackedLink>
         </nav>
       </header>
 
@@ -308,12 +310,14 @@ export default function Home() {
                 <p className="mt-4 text-base leading-7 text-[#596560]">
                   {plan.body}
                 </p>
-                <a
+                <TrackedLink
                   href="#contact"
+                  event="plan_contact_clicked"
+                  properties={{ plan_name: plan.title }}
                   className="mt-auto inline-flex min-h-11 items-center justify-center rounded-sm bg-[#0b5d4a] px-5 text-sm font-extrabold text-white transition hover:bg-[#074838]"
                 >
                   Ask about this plan
-                </a>
+                </TrackedLink>
               </article>
             ))}
           </div>

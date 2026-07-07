@@ -3,6 +3,7 @@
 import type { CSSProperties } from "react";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import posthog from "posthog-js";
 
 const heroVideos = [
   { src: "/hero-videos/acceptance-reaction-01.mp4", offset: 0, delay: 250 },
@@ -108,12 +109,14 @@ export default function HeroBanner() {
         <div className="mt-9 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
           <a
             href="#contact"
+            onClick={() => posthog.capture("hero_primary_cta_clicked")}
             className="inline-flex min-h-12 items-center justify-center rounded-sm bg-[#f3c64e] px-7 text-sm font-black text-[#10201b] transition hover:bg-[#ffd762]"
           >
             Start your admissions plan
           </a>
           <a
             href="#services"
+            onClick={() => posthog.capture("hero_secondary_cta_clicked")}
             className="inline-flex min-h-12 items-center justify-center rounded-sm border border-white/35 px-7 text-sm font-extrabold text-white transition hover:bg-white/10"
           >
             Explore services

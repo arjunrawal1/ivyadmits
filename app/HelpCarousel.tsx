@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import posthog from "posthog-js";
 
 type HelpItem = {
   title: string;
@@ -241,6 +242,10 @@ export default function HelpCarousel({ items }: HelpCarouselProps) {
             onClick={() => {
               pauseForInteraction();
               scrollToCard(items.length * 2 + index);
+              posthog.capture("help_carousel_card_selected", {
+                card_title: item.title,
+                card_index: index,
+              });
             }}
           />
         ))}

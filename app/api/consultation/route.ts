@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { getPostHogClient } from "@/lib/posthog-server";
 
 const NYLAS_API_URI = process.env.NYLAS_API_URI ?? "https://api.us.nylas.com";
 const NYLAS_API_KEY = process.env.NYLAS_API_KEY;
@@ -79,6 +80,19 @@ export async function POST(request: Request) {
       { status: 502 },
     );
   }
+
+  const distinctId = request.headers.get("x-posthog-distinct-id") ?? "anonymous";
+  const sessionId = request.headers.get("x-posthog-session-id") ?? undefined;
+
+  const posthog = getPostHogClient();
+  posthog.capture({
+    distinctId,
+    event: "consultation_received",
+    properties: {
+      provided_name: name.length > 0,
+      $session_id: sessionId,
+    },
+  });
 
   return NextResponse.json({ ok: true });
 }
