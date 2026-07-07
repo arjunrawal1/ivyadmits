@@ -137,7 +137,7 @@ const mentorBios = [
   },
   {
     name: "Nikhil Vaddey",
-    role: "Incoming Berkeley M.E.T. student",
+    role: "Incoming Berkeley student",
     image: "/mentors/nikhil-vaddey.png",
     bio: "Nikhil pairs business, technology, and service leadership. He served as an FBLA state officer and National Council board member, captained his varsity tennis team as a four-year letterman, interned in financial analysis at Citco, founded TechDreams4Kids to donate hundreds of laptops to Title I schools, and built NNR Technologies into a six-figure restaurant software business.",
   },
