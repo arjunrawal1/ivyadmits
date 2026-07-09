@@ -39,12 +39,20 @@ export async function POST(request: Request) {
   }
 
   const name = typeof body.name === "string" ? body.name.trim().slice(0, 120) : "";
+  if (!name) {
+    return NextResponse.json(
+      { error: "Please enter your name." },
+      { status: 400 },
+    );
+  }
+  const note = typeof body.note === "string" ? body.note.trim().slice(0, 1000) : "";
 
   const lines = [
     "New free consultation request from the IvyAdmits site.",
     "",
-    name ? `Name: ${name}` : null,
+    `Name: ${name}`,
     `Phone: ${phone}`,
+    note ? `Note: ${note}` : null,
     `Submitted: ${new Date().toISOString()}`,
   ].filter(Boolean);
 
@@ -89,7 +97,8 @@ export async function POST(request: Request) {
     distinctId,
     event: "consultation_received",
     properties: {
-      provided_name: name.length > 0,
+      provided_name: true,
+      provided_note: note.length > 0,
       $session_id: sessionId,
     },
   });

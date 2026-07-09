@@ -8,6 +8,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 export default function ConsultationForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [note, setNote] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
 
@@ -29,7 +30,7 @@ export default function ConsultationForm() {
       const res = await fetch("/api/consultation", {
         method: "POST",
         headers,
-        body: JSON.stringify({ name, phone }),
+        body: JSON.stringify({ name, phone, note }),
       });
 
       const data = (await res.json().catch(() => ({}))) as { error?: string };
@@ -48,9 +49,11 @@ export default function ConsultationForm() {
       setMessage("Thanks! We'll call you shortly to set up your consultation.");
       posthog.capture("consultation_submitted", {
         provided_name: name.trim().length > 0,
+        provided_note: note.trim().length > 0,
       });
       setName("");
       setPhone("");
+      setNote("");
     } catch {
       setStatus("error");
       setMessage("Something went wrong. Please try again.");
@@ -61,14 +64,14 @@ export default function ConsultationForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="p-6 md:p-8">
+    <form onSubmit={handleSubmit} className="p-6 md:p-8">
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label
             htmlFor="consult-name"
             className="text-xs font-black uppercase tracking-[0.16em] text-[#0b5d4a]"
           >
-            Name (optional)
+            Name
           </label>
           <input
             id="consult-name"
@@ -78,6 +81,7 @@ export default function ConsultationForm() {
             placeholder="Your name"
             value={name}
             onChange={(event) => setName(event.target.value)}
+            required
             disabled={status === "submitting"}
             className="min-h-12 border border-[#18211f]/20 bg-white px-4 text-base text-[#18211f] outline-none transition focus:border-[#0b5d4a] focus:ring-2 focus:ring-[#0b5d4a]/25 disabled:opacity-60"
           />
@@ -104,6 +108,25 @@ export default function ConsultationForm() {
             className="min-h-12 border border-[#18211f]/20 bg-white px-4 text-base text-[#18211f] outline-none transition focus:border-[#0b5d4a] focus:ring-2 focus:ring-[#0b5d4a]/25 disabled:opacity-60"
           />
         </div>
+      </div>
+
+      <div className="mt-5 flex flex-col gap-2">
+        <label
+          htmlFor="consult-note"
+          className="text-xs font-black uppercase tracking-[0.16em] text-[#0b5d4a]"
+        >
+          Note (optional)
+        </label>
+        <textarea
+          id="consult-note"
+          name="note"
+          rows={4}
+          placeholder="Anything you want us to know before we call?"
+          value={note}
+          onChange={(event) => setNote(event.target.value)}
+          disabled={status === "submitting"}
+          className="min-h-28 resize-y border border-[#18211f]/20 bg-white px-4 py-3 text-base text-[#18211f] outline-none transition focus:border-[#0b5d4a] focus:ring-2 focus:ring-[#0b5d4a]/25 disabled:opacity-60"
+        />
       </div>
 
       <button
