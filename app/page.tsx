@@ -120,31 +120,31 @@ const processSteps = [
 const mentorBios = [
   {
     name: "Arjun Rawal",
-    role: "Incoming Stanford student",
+    role: "Student at Stanford",
     image: "/mentors/arjun-rawal.png",
     bio: "Arjun brings experience across selective admissions, research, and startups. He has worked at RevisionDojo, a Y Combinator-funded company, is now building at Phia, founded a six-figure national tutoring business, published NeurIPS research, and became a Diamond Challenge international grand finalist through venture-building work.",
   },
   {
     name: "Sathvik Gorle",
-    role: "Incoming Penn M&T student",
+    role: "Student at Penn M&T",
     image: "/mentors/sathvik-gorle.png",
     bio: "Sathvik combines entrepreneurship, research, and national competition experience. He founded Terrabite, received funding through Launch Chapel Hill and NSF I-Corps, won an FBLA national championship, researched economics and computer science at Duke, and interned at Rove, a Y Combinator-backed company.",
   },
   {
     name: "Hadi Abdul",
-    role: "Incoming Harvard student",
+    role: "Student at Harvard",
     image: "/mentors/hadi-abdul.png",
     bio: "Hadi is a USAPhO Silver Medalist and USAMO qualifier, placing him among the nation's top high school physics and math competitors. He researches at Duke's Dunn Lab and the WHO Innovation Hub, founded VoiceWorks to support 9,000+ non-verbal students and 60+ speech-language pathologists, and contributed to patented passive-cooling technology at Katrick Tech.",
   },
   {
     name: "Nikhil Vaddey",
-    role: "Incoming Berkeley student",
+    role: "Student at Berkeley",
     image: "/mentors/nikhil-vaddey.png",
     bio: "Nikhil pairs business, technology, and service leadership. He served as an FBLA state officer and National Council board member, captained his varsity tennis team as a four-year letterman, interned in financial analysis at Citco, founded TechDreams4Kids to donate hundreds of laptops to Title I schools, and built NNR Technologies into a six-figure restaurant software business.",
   },
   {
     name: "Pulak Agarwalla",
-    role: "Incoming Duke student",
+    role: "Student at Duke",
     image: "/mentors/pulak-agarwalla.png",
     bio: "Pulak brings direct insight into the modern application process through serving on the national Common App Student Advisory Board. He co-founded a chess nonprofit raising $150K+ and serving 400+ Title I students. He published math research at UNC, is the NC State K-12 Chess Co-Champion, and placed nationally in FBLA for financial math.",
   },
