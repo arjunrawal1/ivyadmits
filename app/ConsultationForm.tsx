@@ -5,6 +5,14 @@ import posthog from "posthog-js";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
+// Mirror the server's normalizePhone check (app/api/consultation/route.ts) so an
+// empty or malformed number is caught instantly on the client, without a wasted
+// round-trip that only comes back with a 400.
+function isValidPhone(input: string): boolean {
+  const digits = input.replace(/\D/g, "");
+  return digits.length >= 7 && digits.length <= 15;
+}
+
 export default function ConsultationForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -15,6 +23,15 @@ export default function ConsultationForm() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (status === "submitting") return;
+
+    if (!isValidPhone(phone)) {
+      setStatus("error");
+      setMessage("Please enter a valid phone number.");
+      posthog.capture("consultation_submission_failed", {
+        error_message: "invalid_phone_client",
+      });
+      return;
+    }
 
     setStatus("submitting");
     setMessage("");
